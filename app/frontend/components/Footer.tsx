@@ -14,7 +14,7 @@ const SmallFooterWithSocial = () => (
       align={{ base: 'center' }}
     >
       <Center>
-        <Text>© 2023 Fera Solucoes</Text>
+        <Text>© 2023 Fera Soluções</Text>
       </Center>
       <Container
         as={Stack}
@@ -24,6 +24,8 @@ const SmallFooterWithSocial = () => (
         spacing={2}
         padding={0}
         direction="row"
+        width={{ base: 'unset', md: 'auto' }}
+        marginTop={{ base: '0 !important' }}
       >
         <SocialButton label="Twitter" href="#">
           <FaTwitter />
