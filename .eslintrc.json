@@ -1,0 +1,74 @@
+{
+  "root": true,
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", "*.ts", "*.tsx"],
+        "paths": ["./app/frontend"]
+      },
+      "typescript": {}
+    }
+  },  
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"    
+  },
+  "ignorePatterns": ["**/vendor/*.js", "./public/**"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "overrides": [
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/typescript"    
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "jsx-a11y",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "printWidth": 120,
+        "endOfLine": "auto",
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false
+      }
+    ],
+    "no-param-reassign": [2, { "props": false }],
+    "no-return-await": 0,
+    "no-console": 0,
+    "no-unused-vars": "warn",
+    "react/forbid-prop-types": ["error", { "forbid": [ "any" ] }],
+    "react/function-component-definition": ["warn", { "namedComponents": "arrow-function" }],
+    "react/jsx-filename-extension": [2, { "extensions": [".jsx", ".tsx"] }],
+    "react/jsx-indent": "warn",
+    "react/jsx-key": "warn",
+    "react/no-danger": 0,
+    "react/prefer-destructuring": "off",
+    "react/react-in-jsx-scope": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "semi": [ "warn", "always" ],
+    "unicode-bom": 0
+  }
+}
