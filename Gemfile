@@ -39,6 +39,7 @@ gem 'bootsnap', '~> 1.16', require: false
 gem 'devise', '~> 4.9'
 gem 'inertia_rails', '~> 3.0'
 gem 'vite_rails', '~> 3.0'
+gem 'dalli'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -57,9 +58,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 
-  # Support for Ruby Language Server on
-  gem 'ruby-lsp', '~> 0.4'
-
   # Byebug
   gem 'byebug', '~> 11.1'
 
@@ -68,6 +66,12 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+
+  # Support for Ruby Language Server / VSCode Integration
+  gem 'ruby-lsp', '~> 0.4'
+  gem 'sorbet'
+  gem 'sorbet-runtime'
+  gem 'tapioca', require: false
 end
 
 group :test do
