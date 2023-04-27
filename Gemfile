@@ -73,9 +73,6 @@ group :development do
 
   # Support for Ruby Language Server / VSCode Integration
   gem 'ruby-lsp', '~> 0.4'
-  gem 'sorbet'
-  gem 'sorbet-runtime'
-  gem 'tapioca', require: false
 end
 
 group :test do
