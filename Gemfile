@@ -36,16 +36,20 @@ gem 'bootsnap', '~> 1.16', require: false
 # gem "image_processing', "~> 1.2"
 
 # Gems added to the project
+gem 'dalli'
 gem 'devise', '~> 4.9'
 gem 'inertia_rails', '~> 3.0'
 gem 'vite_rails', '~> 3.0'
-gem 'dalli'
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '~> 1.7', platforms: %i[mri mingw x64_mingw]
 
   gem 'pry-byebug', '~> 3.10'
+
+  # Test Tools
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do

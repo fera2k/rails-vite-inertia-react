@@ -101,6 +101,13 @@ GEM
     diff-lcs (1.5.0)
     dry-cli (1.0.0)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.1.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -141,8 +148,6 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.14.2-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.22.1)
@@ -204,6 +209,23 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
+    rspec-core (3.12.1)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.12.0)
     rubocop (1.49.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -241,9 +263,7 @@ GEM
     sorbet (0.5.10746)
       sorbet-static (= 0.5.10746)
     sorbet-runtime (0.5.10746)
-    sorbet-static (0.5.10746-universal-darwin-21)
     sorbet-static (0.5.10746-universal-darwin-22)
-    sorbet-static (0.5.10746-x86_64-linux)
     sorbet-static-and-runtime (0.5.10746)
       sorbet (= 0.5.10746)
       sorbet-runtime (= 0.5.10746)
@@ -252,7 +272,6 @@ GEM
       sorbet-runtime (>= 0.5.9204)
       thor (>= 0.19.2)
     sqlite3 (1.6.2-arm64-darwin)
-    sqlite3 (1.6.2-x86_64-linux)
     syntax_tree (6.1.1)
       prettier_print (>= 1.2.0)
     tapioca (0.11.4)
@@ -305,9 +324,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
-  arm64-darwin-21
   arm64-darwin-22
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap (~> 1.16)
@@ -316,11 +333,14 @@ DEPENDENCIES
   dalli
   debug (~> 1.7)
   devise (~> 4.9)
+  factory_bot_rails
+  faker
   inertia_rails (~> 3.0)
   jbuilder (~> 2.11)
   pry-byebug (~> 3.10)
   puma (~> 6.0)
   rails (~> 7.0.4)
+  rspec-rails
   rubocop-capybara
   rubocop-performance
   rubocop-rails
@@ -340,4 +360,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.3.17
+   2.4.10
