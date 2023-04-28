@@ -47,9 +47,9 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.10'
 
   # Test Tools
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'rspec-rails'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 3.2'
+  gem 'rspec-rails', '~> 6.0'
 end
 
 group :development do
@@ -61,9 +61,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
-
-  # Byebug
-  gem 'byebug', '~> 11.1'
 
   # Rubocop extensions
   gem 'rubocop-capybara', require: false

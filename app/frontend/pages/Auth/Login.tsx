@@ -82,7 +82,7 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
           <Heading fontSize="4xl">Log In</Heading>
         </Stack>
         <Box rounded="lg" bg={useColorModeValue('white', 'gray.700')} boxShadow="lg" p={8}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id="login_form">
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email</FormLabel>
@@ -103,7 +103,7 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
                 }}
                 type="submit"
               >
-                Sign in
+                Sign In
               </Button>
               <Center>
                 <Button color="blue.400" onClick={onClickResetPassword} variant="link">

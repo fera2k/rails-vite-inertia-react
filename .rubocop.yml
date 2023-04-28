@@ -31,3 +31,7 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - 'db/**/*'
     
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/system/**/*'
