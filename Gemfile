@@ -62,6 +62,9 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 
+  # Guard for automatically running specs
+  gem 'guard-rspec', require: false
+
   # Rubocop extensions
   gem 'rubocop-capybara', require: false
   gem 'rubocop-performance', require: false
