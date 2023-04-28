@@ -9,7 +9,7 @@
     "@emotion/styled": "^11.10.6",
     "@inertiajs/core": "^1.0.6",
     "@inertiajs/react": "^1.0.6",
-    "axios": "^1.3.6",
+    "axios": "^1.4.0",
     "framer-motion": "^10.12.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
