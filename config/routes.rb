@@ -14,4 +14,8 @@ Rails.application.routes.draw do
         to: 'users/passwords#request_confirmation',
         as: :password_request_confirmation
   end
+
+  namespace :admin, module: 'users' do
+    resources :users
+  end
 end

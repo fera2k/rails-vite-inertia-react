@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { router } from '@inertiajs/react';
+import { router, Link as InertiaLink } from '@inertiajs/react';
 import {
   Box,
   Flex,
@@ -32,6 +32,16 @@ const defaultNavItem = {
 };
 
 const NAV_ITEMS: Array<NavItem> = [
+  {
+    label: 'Admin',
+    href: '',
+    subItems: [
+      {
+        label: 'Users',
+        href: '/admin/users',
+      },
+    ],
+  },
   {
     label: 'Top Menu 1',
     href: '',
@@ -82,24 +92,26 @@ const DesktopSubNav = ({ label, href, subItems }: NavItem): JSX.Element => {
       rounded="md"
       _hover={{ bg: useColorModeValue('green.50', 'gray.900') }}
     >
-      <Stack direction="row" align="center">
-        <Box>
-          <Text transition="all .3s ease" _groupHover={{ color: 'green.400' }} fontWeight={500}>
-            {label}
-          </Text>
-        </Box>
-        <Flex
-          transition="all .3s ease"
-          transform="translateX(-10px)"
-          opacity={0}
-          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-          justify="flex-end"
-          align="center"
-          flex={1}
-        >
-          {subItems && subItems.length > 0 && <Icon color="green.400" w={5} h={5} as={ChevronRightIcon} />}
-        </Flex>
-      </Stack>
+      <InertiaLink href={href}>
+        <Stack direction="row" align="center">
+          <Box>
+            <Text transition="all .3s ease" _groupHover={{ color: 'green.400' }} fontWeight={500}>
+              {label}
+            </Text>
+          </Box>
+          <Flex
+            transition="all .3s ease"
+            transform="translateX(-10px)"
+            opacity={0}
+            _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
+            justify="flex-end"
+            align="center"
+            flex={1}
+          >
+            {subItems && subItems.length > 0 && <Icon color="green.400" w={5} h={5} as={ChevronRightIcon} />}
+          </Flex>
+        </Stack>
+      </InertiaLink>
     </Link>
   );
 };
