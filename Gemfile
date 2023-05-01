@@ -40,6 +40,7 @@ gem 'dalli'
 gem 'devise', '~> 4.9'
 gem 'inertia_rails', '~> 3.0'
 gem 'vite_rails', '~> 3.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '~> 1.7', platforms: %i[mri mingw x64_mingw]
@@ -50,6 +51,9 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 3.2'
   gem 'rspec-rails', '~> 6.0'
+
+  # DotEnv
+  gem 'dotenv-rails'
 end
 
 group :development do

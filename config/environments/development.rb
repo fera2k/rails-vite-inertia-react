@@ -46,7 +46,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Added to allow devise to send emails on development environment
-  config.action_mailer.default_url_options = { host: 'localhost', port: 5100 }
+  config.action_mailer.default_url_options = { host: ENV.fetch('HOSTNAME', 'localhost'), port: ENV.fetch('PORT', 3000) }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true

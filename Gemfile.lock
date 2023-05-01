@@ -99,6 +99,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     dry-cli (1.0.0)
     erubi (1.12.0)
     factory_bot (6.2.1)
@@ -334,6 +338,7 @@ DEPENDENCIES
   dalli
   debug (~> 1.7)
   devise (~> 4.9)
+  dotenv-rails
   factory_bot_rails (~> 6.2)
   faker (~> 3.2)
   guard-rspec
