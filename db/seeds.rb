@@ -10,4 +10,4 @@
 
 # Admin User
 u = User.find_or_initialize_by(email: 'admin@test.com')
-u.update({ password: '123456' })
+u.update({ username: 'admin', password: '123456' })

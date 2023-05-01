@@ -34,7 +34,7 @@ en:
 
   messages:
     # error messages
-    invalid_credentials: Email or password is not valid.
+    invalid_credentials: These credentials are not valid.
     page_expired: This page has expired. Please try again.
 
     # success messages

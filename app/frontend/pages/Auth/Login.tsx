@@ -27,7 +27,7 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
   const { flash } = useTypedPage().props;
   const toast = useToast();
   const { data, setData } = useForm({
-    email: '',
+    login: '',
     password: '',
     remember: false,
   });
@@ -84,9 +84,9 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
         <Box rounded="lg" bg={useColorModeValue('white', 'gray.700')} boxShadow="lg" p={8}>
           <form onSubmit={handleSubmit} id="login_form">
             <Stack spacing={4}>
-              <FormControl id="email">
-                <FormLabel>Email</FormLabel>
-                <Input type="email" value={data.email} onChange={handleChange} />
+              <FormControl id="login">
+                <FormLabel>Username or Email</FormLabel>
+                <Input type="login" value={data.login} onChange={handleChange} />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
