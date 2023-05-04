@@ -65,9 +65,9 @@ const NavMenu = ({ menuOptions, navigate, logoOnClick }: NavMenuProps) => {
                   <MenuButton as={Button} size="sm" ml={2} onClick={() => menu.onClick && onClickMenu(menu.onClick)}>
                     {menu.sectionLabel}
                   </MenuButton>
-                  {menu.sectionItems && (
+                  {menu.sectionItems && menu.sectionItems.length > 0 && (
                     <MenuList maxW="fit-content">
-                      {menu.sectionItems.map((menuItem) => {
+                      {menu.sectionItems?.map((menuItem) => {
                         const { label, path, Icon } = menuItem;
                         return (
                           <MenuItem key={label} onClick={() => navigate(path)}>

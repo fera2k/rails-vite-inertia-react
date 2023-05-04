@@ -2,6 +2,8 @@
 import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { ChakraProvider } from '@chakra-ui/react';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
 
 const createApp = () =>
   createInertiaApp({

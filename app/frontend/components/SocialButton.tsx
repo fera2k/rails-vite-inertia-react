@@ -1,7 +1,13 @@
 import { ReactNode } from 'react';
 import { Button, useColorModeValue, VisuallyHidden } from '@chakra-ui/react';
 
-const SocialButton = ({ children, label, href }: { children: ReactNode; label: string; href: string }) => {
+interface SocialButtonProps {
+  children: ReactNode;
+  label: string;
+  href: string;
+}
+
+const SocialButton = ({ children, label, href }: SocialButtonProps) => {
   return (
     <Button
       variant="ghost"
