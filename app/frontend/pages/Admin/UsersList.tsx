@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { Column } from 'primereact/column';
+import { FaUsers } from 'react-icons/fa';
 
 import SimpleLayout from '@/layouts/SimpleLayout';
 import RecordsGrid from '@/components/RecordsGrid';
@@ -18,11 +19,14 @@ type UsersListProps = {
 const UsersList = ({ users }: UsersListProps) => {
   return (
     <Flex direction="column" padding={4} justify="left">
-      <Heading fontSize="2xl" paddingStart="6">
-        Users List
-      </Heading>
-      <RecordsGrid items={users} dataKey="id">
-        <Column header="Username" field="username" />
+      <RecordsGrid
+        title="User's List"
+        titleIcon={FaUsers}
+        items={users}
+        dataKey="id"
+        scrollHeight="calc(100vh - 300px)"
+      >
+        <Column header="Username" field="username" headerStyle={{ width: '30%' }} />
         <Column header="Email" field="email" />
       </RecordsGrid>
     </Flex>

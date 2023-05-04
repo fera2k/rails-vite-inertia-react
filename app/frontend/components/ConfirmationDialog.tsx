@@ -21,7 +21,7 @@ const ConfirmationDialog = ({ title, message, isOpen, onConfirm, onCancel = () =
   const cancelRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onCancel}>
+    <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onCancel} isCentered>
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">

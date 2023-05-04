@@ -1,0 +1,9 @@
+.records-grid.p-datatable {
+  .p-datatable-header {
+    background-color: #fff;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+  }
+}
