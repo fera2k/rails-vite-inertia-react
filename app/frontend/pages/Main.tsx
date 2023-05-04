@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
-import SimpleLayoutWithFooter from '../layouts/SimpleLayoutWithFooter';
-import NavMenu from './NavMenu';
+import SimpleLayout from '../layouts/SimpleLayout';
 
 const Main = (): JSX.Element => {
-  return <NavMenu />;
+  return <div>Hello World</div>;
 };
 
-Main.layout = (page: ReactNode) => <SimpleLayoutWithFooter>{page}</SimpleLayoutWithFooter>;
+Main.layout = (page: ReactNode) => <SimpleLayout>{page}</SimpleLayout>;
 
 export default Main;
