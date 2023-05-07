@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
 import RubyPlugin from 'vite-plugin-ruby';
 import react from '@vitejs/plugin-react';
-import WindiCSS from 'vite-plugin-windicss';
+import UnoCSS from 'unocss/vite';
 import FullReload from 'vite-plugin-full-reload';
 import dynamicImport from 'vite-plugin-dynamic-import';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
@@ -16,7 +16,7 @@ export default defineConfig({
       // Only .tsx files
       include: '**/*.tsx',
     }),
-    WindiCSS(),
+    UnoCSS(),
   ],
 });
 
