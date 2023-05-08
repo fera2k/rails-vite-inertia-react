@@ -18,7 +18,7 @@
     },
     "project": "./tsconfig.json"
   },
-  "ignorePatterns": ["**/vendor/*.js", "./public/**"],
+  "ignorePatterns": ["**/vendor/*.js", "./public/**", "*.config.ts"],
   "env": {
     "browser": true,
     "es2021": true

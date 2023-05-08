@@ -14,7 +14,7 @@
 
 import createApp from '../App';
 // eslint-disable-next-line import/no-unresolved
-import 'virtual:windi.css';
+import 'virtual:uno.css';
 
 createApp();
 

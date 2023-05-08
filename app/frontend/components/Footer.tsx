@@ -3,7 +3,7 @@ import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import SocialButton from './SocialButton';
 
 const SmallFooterWithSocial = () => (
-  <Box bg={useColorModeValue('gray.50', 'gray.900')} color={useColorModeValue('gray.700', 'gray.200')}>
+  <Box bg={useColorModeValue('gray.200', 'gray.900')} color={useColorModeValue('gray.700', 'gray.200')}>
     <Container
       as={Stack}
       maxW="6xl"

@@ -1,10 +1,10 @@
 import { ReactNode, CSSProperties, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
-import { Box, Button, Flex, HStack, Heading, Icon, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
 import { IoAddCircle } from 'react-icons/io5';
-import './customRecordsGridStyle.css';
 import { IconType } from 'react-icons';
+import { SearchIcon } from '@chakra-ui/icons';
+import { Box, Button, Flex, HStack, Heading, Icon, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import './styles/RecordsGridStyle.css';
 
 interface RecordsGridProps {
   title?: string;
@@ -13,13 +13,14 @@ interface RecordsGridProps {
   items: object[];
   selectedRecords?: object[];
   dataKey: string;
-  onSelectionChange?: () => void;
   sortMode?: 'multiple' | 'single';
   sortOrder?: null | 0 | 1 | -1;
   sortField?: string;
   globalFilterFields?: string[];
   tableStyle?: CSSProperties;
   scrollHeight?: string;
+  onSelectionChange?: () => void;
+  onNewClick?: () => void;
 }
 
 const RecordsGrid = ({
@@ -29,26 +30,27 @@ const RecordsGrid = ({
   items,
   selectedRecords,
   dataKey,
-  onSelectionChange,
   sortMode,
   sortOrder,
   sortField,
   globalFilterFields,
   tableStyle,
   scrollHeight,
+  onSelectionChange,
+  onNewClick,
 }: RecordsGridProps) => {
   const MIN_ROWS = 10;
   const showPaginator = items?.length > MIN_ROWS;
   const [globalFilter, setGlobalFilter] = useState('');
 
   const tableHeader = (
-    <Flex padding={2} justify="space-between" wrap="nowrap">
+    <Flex padding={2} justify="space-between" wrap="nowrap" className="bg-transparent">
       <HStack w="100%" margin="auto" marginLeft="0">
         {titleIcon && <Icon as={titleIcon} boxSize={6} />}
         <Heading size="md">{title}</Heading>
       </HStack>
       <Box w="100%" textAlign="right" paddingEnd={2}>
-        <Button variant="ghost" size="md">
+        <Button variant="ghost" size="md" onClick={onNewClick} borderRadius="20px" colorScheme="green">
           <IoAddCircle />
           &nbsp;New
         </Button>
@@ -103,13 +105,14 @@ RecordsGrid.defaultProps = {
   title: '',
   titleIcon: null,
   sortMode: 'single',
-  onSelectionChange: () => {},
   sortOrder: null,
   selectedRecords: null,
   sortField: null,
   globalFilterFields: null,
   tableStyle: null,
   scrollHeight: null,
+  onSelectionChange: () => {},
+  onNewClick: () => {},
 };
 
 export default RecordsGrid;

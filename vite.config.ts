@@ -1,5 +1,5 @@
 import RubyPlugin from 'vite-plugin-ruby';
-import react from '@vitejs/plugin-react';
+import React from '@vitejs/plugin-react';
 import UnoCSS from 'unocss/vite';
 import FullReload from 'vite-plugin-full-reload';
 import dynamicImport from 'vite-plugin-dynamic-import';
@@ -10,7 +10,7 @@ export default defineConfig({
     dynamicImport(),
     FullReload(['config/routes.rb', 'app/views/**/*']),
     RubyPlugin(),
-    react({
+    React({
       // Exclude storybook stories
       exclude: /\.stories\.(t|j)sx?$/,
       // Only .tsx files
