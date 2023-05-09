@@ -3,6 +3,7 @@ import React from '@vitejs/plugin-react';
 import UnoCSS from 'unocss/vite';
 import FullReload from 'vite-plugin-full-reload';
 import dynamicImport from 'vite-plugin-dynamic-import';
+import linaria from '@linaria/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
       include: '**/*.tsx',
     }),
     UnoCSS(),
+    linaria(),
   ],
 });
 

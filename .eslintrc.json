@@ -58,7 +58,6 @@
     "no-param-reassign": [2, { "props": false }],
     "no-return-await": 0,
     "no-console": 0,
-    "no-unused-vars": "warn",
     "react/forbid-prop-types": ["error", { "forbid": [ "any" ] }],
     "react/function-component-definition": ["warn", { "namedComponents": "arrow-function" }],
     "react/jsx-filename-extension": [2, { "extensions": [".jsx", ".tsx"] }],
@@ -69,6 +68,47 @@
     "react/react-in-jsx-scope": 0,
     "react-hooks/rules-of-hooks": "error",
     "semi": [ "warn", "always" ],
-    "unicode-bom": 0
+    "unicode-bom": 0,
+    "no-unused-vars": [
+      "warn", 
+      { 
+        "args": "after-used", 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn", 
+      { 
+        "args": "after-used", 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": [
+          "camelCase",
+          "PascalCase",
+          "UPPER_CASE"
+        ],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "function",
+        "format": [
+          "camelCase",
+          "PascalCase"
+        ]
+      },
+      {
+        "selector": "typeLike",
+        "format": [
+          "PascalCase"
+        ]
+      }
+    ]
   }
 }
