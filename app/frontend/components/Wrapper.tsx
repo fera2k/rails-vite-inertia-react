@@ -1,10 +1,10 @@
 import { styled } from '@linaria/react';
 
 export interface WrapperProps {
-  height: number | string;
+  height?: number | string;
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div<WrapperProps>`
   overflow: hidden;
   position: relative;
 
@@ -15,7 +15,7 @@ export const Wrapper = styled.div<WrapperProps>`
   width: 100%;
   height: ${(p) => `${p.height}`};
 
-  margin: 24px 0;
+  margin: 8px 0;
 
   > :first-child {
     position: absolute;
@@ -25,3 +25,9 @@ export const Wrapper = styled.div<WrapperProps>`
     height: 100%;
   }
 `;
+
+Wrapper.defaultProps = {
+  height: '100vh',
+};
+
+export default Wrapper;
