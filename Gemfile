@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 3.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.4'
+gem 'rails', '~> 7.0.6'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.6'
@@ -36,7 +36,7 @@ gem 'bootsnap', '~> 1.16', require: false
 # gem "image_processing', "~> 1.2"
 
 # Gems added to the project
-gem 'dalli'
+gem 'dalli', '~> 3.2.5'
 gem 'devise', '~> 4.9'
 gem 'inertia_rails', '~> 3.0'
 gem 'vite_rails', '~> 3.0'
@@ -81,7 +81,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara', '~> 3.38'
+  gem 'capybara', '~> 3.39.2'
   gem 'selenium-webdriver', '~> 4.8'
   gem 'webdrivers', '~> 5.2', require: false
 end
