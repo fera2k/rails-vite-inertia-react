@@ -20,6 +20,7 @@ import { FaUserPlus } from 'react-icons/fa';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 import SimpleLayout from '@/layouts/SimpleLayout';
+import FormWrapper from '@/components/FormWrapper';
 
 type UserType = {
   id: number;
@@ -63,20 +64,24 @@ const UsersList = ({ user }: UsersNewProps) => {
             </Button>
           </Flex>
 
-          <Stack spacing="6" direction="column">
-            <FormControl id="username">
-              <FormLabel>Username</FormLabel>
-              <Input defaultValue={user.username} />
-            </FormControl>
-            <FormControl id="email">
-              <FormLabel>Email</FormLabel>
-              <Input defaultValue={user.email} />
-            </FormControl>
-          </Stack>
-          <FormControl id="isAdmin">
-            <FormLabel>Is Admin</FormLabel>
-            <Checkbox defaultChecked={false} disabled />
-          </FormControl>
+          <FormWrapper>
+            <Stack spacing="6" direction="column">
+              <FormControl id="username">
+                <FormLabel>Username</FormLabel>
+                <Input defaultValue={user.username} colorScheme="cyan" />
+              </FormControl>
+              <FormControl id="email">
+                <FormLabel>Email</FormLabel>
+                <Input defaultValue={user.email} />
+              </FormControl>
+              <FormControl id="isAdmin">
+                <HStack>
+                  <Checkbox defaultChecked={false} disabled />
+                  <FormLabel paddingTop="2">Is Admin?</FormLabel>
+                </HStack>
+              </FormControl>
+            </Stack>
+          </FormWrapper>
         </Stack>
         <Divider />
         <Stack
