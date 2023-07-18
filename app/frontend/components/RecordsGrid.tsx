@@ -5,7 +5,7 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { Box, Button, Flex, HStack, Heading, Icon, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import sortBy from 'lodash.sortby';
 import BaseTable, { AutoResizer, ColumnShape, SortOrder } from 'react-base-table';
-import Wrapper from '@/components/Wrapper';
+import GridWrapper from '@/components/GridWrapper';
 import 'react-base-table/styles.css';
 import './styles/RecordsGridStyle.css';
 
@@ -63,7 +63,7 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
         </Box>
       </Flex>
 
-      <Wrapper height={wrapperHeight} id="grid-wrapper">
+      <GridWrapper height={wrapperHeight} id="grid-wrapper">
         <AutoResizer>
           {({ width, height }) => (
             <BaseTable
@@ -76,7 +76,7 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
             />
           )}
         </AutoResizer>
-      </Wrapper>
+      </GridWrapper>
     </Box>
   );
 };
@@ -89,32 +89,3 @@ RecordsGrid.defaultProps = {
 };
 
 export default RecordsGrid;
-
-/*
-    <DataTable
-      sortField={sortField}
-      sortOrder={sortOrder}
-      metaKeySelection={false}
-      selection={selectedRecords}
-      onSelectionChange={onSelectionChange}
-      paginator={showPaginator}
-      rows={MIN_ROWS}
-      rowsPerPageOptions={[10, 20, 50]}
-      value={items}
-      dataKey={dataKey}
-      sortMode={sortMode}
-      emptyMessage="No records found"
-      tableStyle={tableStyle}
-      columnResizeMode="expand"
-      resizableColumns
-      showGridlines
-      globalFilter={globalFilter}
-      globalFilterFields={globalFilterFields}
-      header={tableHeader}
-      className="records-grid"
-      scrollable
-      scrollHeight={scrollHeight}
-    >
-      {children}
-    </DataTable>
-*/
