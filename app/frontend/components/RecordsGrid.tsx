@@ -34,15 +34,15 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
   };
 
   return (
-    <Box>
-      <Flex padding={2} w="100%" paddingX={4} justify="space-between" wrap="nowrap" className="bg-transparent">
-        <HStack w="100%" margin="auto" marginLeft="0">
-          {titleIcon && <Icon as={titleIcon} boxSize={6} />}
+    <>
+      <Flex justify="space-between">
+        <HStack w="100%" paddingLeft={4}>
+          {titleIcon && <Icon as={titleIcon} boxSize={5} />}
           <Heading size="md">{title}</Heading>
         </HStack>
-        <Box w="100%" textAlign="right" paddingEnd={2}>
-          <Button variant="ghost" size="md" onClick={onNewClick} borderRadius="20px" colorScheme="green">
-            <IoAddCircle />
+        <Box w="100%" textAlign="right" paddingTop={1} paddingEnd={2}>
+          <Button variant="outline" size="sm" onClick={onNewClick} borderRadius="20px" colorScheme="green">
+            <Icon as={IoAddCircle} boxSize={5} />
             &nbsp;New
           </Button>
         </Box>
@@ -77,7 +77,7 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
           )}
         </AutoResizer>
       </GridWrapper>
-    </Box>
+    </>
   );
 };
 

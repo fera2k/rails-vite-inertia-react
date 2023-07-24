@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Container, Button } from '@chakra-ui/react';
+import { Container, Button, Tooltip } from '@chakra-ui/react';
 import { FaUsers, FaPencilAlt } from 'react-icons/fa';
 
 import { router } from '@inertiajs/react';
@@ -51,18 +51,23 @@ const columns: ColumnShape[] = [
     frozen: Column.FrozenDirection.RIGHT,
     flexGrow: 1,
     cellRenderer: (elem) => (
-      <Button onClick={() => onClickAction('action', elem.rowData as UserType)} size="sm">
-        <FaPencilAlt />
-      </Button>
+      <Tooltip hasArrow label="Edit record" openDelay={600}>
+        <Button
+          onClick={() => onClickAction('action', elem.rowData as UserType)}
+          size="sm"
+          variant="solid"
+          colorScheme="green"
+        >
+          <FaPencilAlt />
+        </Button>
+      </Tooltip>
     ),
   },
 ];
 
 const UsersList = ({ users, newPath }: UsersListProps) => {
-  console.log(newPath);
-
   return (
-    <Container padding={0} maxWidth="container.lg">
+    <Container padding={0} maxWidth="container.lg" id="page_container">
       <RecordsGrid
         title="User's List"
         titleIcon={FaUsers}
