@@ -1,8 +1,32 @@
-.records-grid.p-datatable .p-datatable-header {
-    background: unset;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding: 0;
-    box-shadow: unset;
+
+.basetable-darkmode {
+  background-color: #ffffff0f;
+  
+  .BaseTable__table {
+    background-color: unset;
   }
+  .BaseTable__table-main {
+    outline-color: #617fa7;
+  }
+  .BaseTable__row {
+    background-color: #ffffff1f;
+    border-bottom-color: #4b5568;    
+  }
+  .BaseTable__row:hover {
+    background-color: #704a4a1f;
+  }
+  .BaseTable__header {
+    background-color: #617fa7;
+  }
+  .BaseTable__header-row {
+    background-color: unset;
+    border-bottom-color: #4b5568;
+  }
+  .BaseTable__header-cell--sortable:hover {
+    background-color: rgb(51, 154, 154);
+  }
+  .BaseTable__header-cell--sortable:not(.BaseTable__header-cell--sorting):hover 
+    .BaseTable__sort-indicator {
+      color: #c9c9c9;
+    }
+}

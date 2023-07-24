@@ -1,6 +1,6 @@
-import { Box, Image } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
-import AppLogo from '../../images/app-logo.png';
+import AppLogoIcon from '@/icons/AppLogoIcon';
 
 interface LogoProps {
   onClick?: () => void;
@@ -8,8 +8,8 @@ interface LogoProps {
 
 const Logo = ({ onClick }: LogoProps) => {
   return (
-    <Box w="161px" onClick={onClick} style={{ cursor: 'pointer' }}>
-      <Image src={AppLogo} alt="App Logo" objectFit="cover" />
+    <Box onClick={onClick} style={{ cursor: 'pointer' }}>
+      <AppLogoIcon width={80} height={60} fill="#309795" />
     </Box>
   );
 };

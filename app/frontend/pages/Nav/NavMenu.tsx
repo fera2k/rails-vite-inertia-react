@@ -46,6 +46,7 @@ interface NavMenuProps {
 const NavMenu = ({ menuOptions, navigate, logoOnClick }: NavMenuProps) => {
   const { isOpen, onToggle, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue('gray.200', 'gray.800');
 
   const onClickMenu = (callbackFn: CallbackFnType) => callbackFn && callbackFn();
 
@@ -53,7 +54,7 @@ const NavMenu = ({ menuOptions, navigate, logoOnClick }: NavMenuProps) => {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.200', 'red.800')} px={4} position="sticky" top={0} boxShadow="md" zIndex={2}>
+      <Box bg={bg} px={4} position="sticky" top={0} boxShadow="md" zIndex={2}>
         <Flex h={16} alignItems="center" justifyContent="space-between">
           <MenuToggle isOpen={isOpen} onToggle={onToggle} />
           <Center>

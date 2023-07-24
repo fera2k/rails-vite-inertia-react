@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { ChakraProvider } from '@chakra-ui/react';
 
+import theme from './theme';
+
 const createApp = () =>
   createInertiaApp({
     resolve: (name) => {
@@ -11,9 +13,9 @@ const createApp = () =>
     },
     setup({ el, App, props }) {
       createRoot(el).render(
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <App {...props} />
-        </ChakraProvider>
+        </ChakraProvider>,
       );
     },
   });
