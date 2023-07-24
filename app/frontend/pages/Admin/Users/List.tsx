@@ -56,7 +56,7 @@ const columns: ColumnShape[] = [
           onClick={() => onClickAction('action', elem.rowData as UserType)}
           size="sm"
           variant="solid"
-          colorScheme="green"
+          colorScheme="teal"
         >
           <FaPencilAlt />
         </Button>

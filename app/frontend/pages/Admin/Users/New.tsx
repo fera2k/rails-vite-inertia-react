@@ -47,7 +47,7 @@ const UsersList = ({ user }: UsersNewProps) => {
             New User
           </Heading>
         </HStack>
-        <Button variant="outline" size="sm" onClick={goBack} borderRadius="20px" colorScheme="cyan">
+        <Button variant="outline" size="sm" onClick={goBack} borderRadius="20px" colorScheme="teal" marginRight={2}>
           <Icon as={IoArrowBackCircle} boxSize={5} />
           &nbsp;Back To List
         </Button>
@@ -72,19 +72,11 @@ const UsersList = ({ user }: UsersNewProps) => {
         </Stack>
       </FormWrapper>
       <Divider />
-      <Stack
-        direction="row-reverse"
-        py="4"
-        px={{
-          base: '4',
-          md: '6',
-        }}
-        spacing={2}
-      >
+      <Stack direction="row-reverse" py={1} px={2} spacing={2}>
         <Button type="submit" variant="solid" colorScheme="blue" leftIcon={<HiOutlineSave />} width="120px">
           Save
         </Button>
-        <Button type="submit" variant="outline" colorScheme="facebook" leftIcon={<MdCancel />} width="120px">
+        <Button type="submit" variant="solid" colorScheme="teal" leftIcon={<MdCancel />} width="120px">
           Cancel
         </Button>
       </Stack>

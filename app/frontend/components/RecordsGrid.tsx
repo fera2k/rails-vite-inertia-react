@@ -41,7 +41,7 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
           <Heading size="md">{title}</Heading>
         </HStack>
         <Box w="100%" textAlign="right" paddingTop={1} paddingEnd={2}>
-          <Button variant="outline" size="sm" onClick={onNewClick} borderRadius="20px" colorScheme="green">
+          <Button variant="outline" size="sm" onClick={onNewClick} borderRadius="20px" colorScheme="teal">
             <Icon as={IoAddCircle} boxSize={5} />
             &nbsp;New
           </Button>
