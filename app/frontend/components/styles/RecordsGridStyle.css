@@ -1,5 +1,4 @@
-.records-grid.p-datatable {
-  .p-datatable-header {
+.records-grid.p-datatable .p-datatable-header {
     background: unset;
     border-top: none;
     border-left: none;
@@ -7,7 +6,3 @@
     padding: 0;
     box-shadow: unset;
   }
-
-  .p-datatable-wrapper {
-  }
-}
