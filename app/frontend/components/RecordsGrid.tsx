@@ -69,6 +69,7 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
             <Input
               type="search"
               placeholder="search..."
+              variant="filled"
               onInput={
                 (_ev: React.ChangeEvent<HTMLInputElement>): void =>
                   console.log('input search') /* setGlobalFilter(ev.target.value) */

@@ -13,7 +13,7 @@ import {
   Icon,
   Input,
   Stack,
-  // useColorModeValue,
+  useColorMode,
 } from '@chakra-ui/react';
 import { FaUserPlus } from 'react-icons/fa';
 import { IoArrowBackCircle } from 'react-icons/io5';
@@ -34,6 +34,8 @@ type UsersNewProps = {
 };
 
 const UsersList = ({ user }: UsersNewProps) => {
+  const { colorMode } = useColorMode();
+
   const goBack = () => {
     router.visit('/admin/users/');
   };
@@ -53,19 +55,19 @@ const UsersList = ({ user }: UsersNewProps) => {
         </Button>
       </Flex>
 
-      <FormWrapper>
+      <FormWrapper className={colorMode === 'light' ? 'form-wrapper-light' : 'form-wrapper-dark'}>
         <Stack spacing="6" direction="column">
           <FormControl id="username">
             <FormLabel>Username</FormLabel>
-            <Input defaultValue={user.username} colorScheme="cyan" />
+            <Input defaultValue={user.username} variant="filled" />
           </FormControl>
           <FormControl id="email">
             <FormLabel>Email</FormLabel>
-            <Input defaultValue={user.email} />
+            <Input defaultValue={user.email} variant="filled" />
           </FormControl>
           <FormControl id="isAdmin">
             <HStack>
-              <Checkbox defaultChecked={false} disabled />
+              <Checkbox defaultChecked={false} />
               <FormLabel paddingTop="2">Is Admin?</FormLabel>
             </HStack>
           </FormControl>
