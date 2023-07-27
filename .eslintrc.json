@@ -66,6 +66,7 @@
     "react/no-danger": 0,
     "react/prefer-destructuring": "off",
     "react/react-in-jsx-scope": 0,
+    "react/require-default-props": 0,
     "react-hooks/rules-of-hooks": "error",
     "semi": [ "warn", "always" ],
     "unicode-bom": 0,
