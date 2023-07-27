@@ -39,3 +39,8 @@ en:
 
     # success messages
     user_logged_out: User successfully logged out.
+
+  users:
+    create:
+      success: User was successfully created.
+      error: User creation failed.
