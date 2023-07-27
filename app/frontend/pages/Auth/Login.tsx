@@ -43,7 +43,6 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
   };
 
   const handleChangeCheckbox = (e: SyntheticEvent<HTMLInputElement>) => {
-    console.log('e', e);
     const { id: key, checked: value } = e.currentTarget;
     setData((values) => ({ ...values, [key]: value }));
   };
@@ -95,18 +94,11 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
               <FormControl id="remember">
                 <Checkbox onChange={handleChangeCheckbox}>Remember this device</Checkbox>
               </FormControl>
-              <Button
-                bg="blue.400"
-                color="white"
-                _hover={{
-                  bg: 'blue.500',
-                }}
-                type="submit"
-              >
+              <Button colorScheme="blue" variant="solid" type="submit">
                 Sign In
               </Button>
               <Center>
-                <Button color="blue.400" onClick={onClickResetPassword} variant="link">
+                <Button colorScheme="teal" onClick={onClickResetPassword} variant="link">
                   Forgot password?
                 </Button>
               </Center>
