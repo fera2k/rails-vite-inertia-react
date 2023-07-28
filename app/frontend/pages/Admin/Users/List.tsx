@@ -19,6 +19,7 @@ type UserType = {
 type UserWithActionsType = UserType & {
   actions: string[];
   editPath: string;
+  deletePath: string;
 };
 
 type UsersListProps = {

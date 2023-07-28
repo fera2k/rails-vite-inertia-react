@@ -47,3 +47,6 @@ en:
     update:
       success: User was successfully updated.
       error: User update failed.
+    destroy:
+      success: User was successfully deleted.
+      error: User deletion failed.

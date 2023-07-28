@@ -8,6 +8,8 @@ import {
   AlertDialogOverlay,
   Button,
 } from '@chakra-ui/react';
+import { MdCancel } from 'react-icons/md';
+import { FaCheck } from 'react-icons/fa';
 
 interface ConfirmationDialogProps {
   title?: string;
@@ -31,10 +33,27 @@ const ConfirmationDialog = ({ title, message, isOpen, onConfirm, onCancel = () =
           <AlertDialogBody>{message}</AlertDialogBody>
 
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onCancel}>
+            <Button
+              ref={cancelRef}
+              type="button"
+              variant="solid"
+              colorScheme="gray"
+              leftIcon={<MdCancel />}
+              width="120px"
+              onClick={onCancel}
+            >
               Cancel
             </Button>
-            <Button colorScheme="red" onClick={onConfirm} ml={3}>
+            <Button
+              ref={cancelRef}
+              type="button"
+              variant="solid"
+              colorScheme="green"
+              leftIcon={<FaCheck />}
+              width="120px"
+              onClick={onConfirm}
+              ml={3}
+            >
               Confirm
             </Button>
           </AlertDialogFooter>

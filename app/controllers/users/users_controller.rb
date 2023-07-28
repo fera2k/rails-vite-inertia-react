@@ -17,13 +17,22 @@ module Users
     def new
       user = User.new
 
-      render inertia: 'Admin/Users/New', props: { user:, userPostPath: admin_users_path }
+      render inertia: 'Admin/Users/New', props: {
+        user:,
+        usersListPath: admin_users_path,
+        userPostPath: admin_users_path
+      }
     end
 
     def edit
       user = User.find(params[:id])
 
-      render inertia: 'Admin/Users/Edit', props: { user:, userPutPath: admin_user_path(user) }
+      render inertia: 'Admin/Users/Edit', props: {
+        user:,
+        usersListPath: admin_users_path,
+        userPutPath: admin_user_path(user),
+        userDeletePath: admin_user_path(user)
+      }
     end
 
     def create
@@ -42,6 +51,14 @@ module Users
       else
         redirect_to(edit_admin_user_path(user), alert: t('users.update.error'), inertia: { errors: user.errors })
       end
+    end
+
+    def destroy
+      user = User.find(params[:id])
+
+      user.destroy
+
+      redirect_to(admin_users_path, notice: t('users.destroy.success'))
     end
 
     private

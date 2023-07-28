@@ -37,10 +37,11 @@ type UserType = {
 
 type UserNewProps = {
   user: UserType;
+  usersListPath: string;
   userPostPath: string;
 };
 
-const UserNew = ({ user, userPostPath }: UserNewProps) => {
+const UserNew = ({ user, usersListPath, userPostPath }: UserNewProps) => {
   const { flash, errors } = useTypedPage().props;
   const toast = useToast();
   const { colorMode } = useColorMode();
@@ -52,7 +53,7 @@ const UserNew = ({ user, userPostPath }: UserNewProps) => {
   });
 
   const goBack = () => {
-    router.visit('/admin/users/');
+    router.visit(usersListPath);
   };
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -136,7 +137,14 @@ const UserNew = ({ user, userPostPath }: UserNewProps) => {
           <Button type="submit" variant="solid" colorScheme="blue" leftIcon={<HiOutlineSave />} width="120px">
             Save
           </Button>
-          <Button type="button" variant="solid" colorScheme="teal" leftIcon={<MdCancel />} width="120px">
+          <Button
+            type="button"
+            variant="solid"
+            colorScheme="teal"
+            leftIcon={<MdCancel />}
+            width="120px"
+            onClick={goBack}
+          >
             Cancel
           </Button>
         </Stack>

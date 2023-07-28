@@ -15,12 +15,14 @@ import {
   Stack,
   useColorMode,
   useToast,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { FaUserEdit } from 'react-icons/fa';
 import { IoArrowBackCircle } from 'react-icons/io5';
 import { HiOutlineSave } from 'react-icons/hi';
-import { MdCancel } from 'react-icons/md';
+import { MdCancel, MdDelete } from 'react-icons/md';
 
+import ConfirmationDialog from '@/components/ConfirmationDialog';
 import SimpleLayout from '@/layouts/SimpleLayout';
 import FormWrapper from '@/components/FormWrapper';
 import TextInput from '@/components/TextInput';
@@ -37,10 +39,12 @@ type UserType = {
 
 type UserEditProps = {
   user: UserType;
+  usersListPath: string;
   userPutPath: string;
+  userDeletePath: string;
 };
 
-const UserEdit = ({ user, userPutPath }: UserEditProps) => {
+const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEditProps) => {
   const { flash, errors } = useTypedPage().props;
   const toast = useToast();
   const { colorMode } = useColorMode();
@@ -50,9 +54,14 @@ const UserEdit = ({ user, userPutPath }: UserEditProps) => {
     password: user.password,
     isAdmin: user.isAdmin,
   });
+  const {
+    isOpen: isOpenDeleteConfirmation,
+    onOpen: setOpenDeleteConfirmation,
+    onClose: onCloseDeleteConfirmation,
+  } = useDisclosure();
 
   const goBack = () => {
-    router.visit('/admin/users/');
+    router.visit(usersListPath);
   };
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -73,6 +82,14 @@ const UserEdit = ({ user, userPutPath }: UserEditProps) => {
     });
   };
 
+  const doDelete = () => {
+    router.delete(userDeletePath, {
+      onSuccess: () => {
+        goBack();
+      },
+    });
+  };
+
   useEffect(() => {
     if (flash && flash.alert) {
       toast({
@@ -85,64 +102,90 @@ const UserEdit = ({ user, userPutPath }: UserEditProps) => {
   }, [flash, toast]);
 
   return (
-    <Container padding={0} maxW="container.sm" id="page_container">
-      <Flex justifyContent="space-between">
-        <HStack paddingLeft={4}>
-          <Icon as={FaUserEdit} boxSize={5} />
-          <Heading size="md" flexDirection="column">
-            Edit User
-          </Heading>
-        </HStack>
-        <Button variant="outline" size="sm" onClick={goBack} borderRadius="20px" colorScheme="teal" marginRight={2}>
-          <Icon as={IoArrowBackCircle} boxSize={5} />
-          &nbsp;Back To List
-        </Button>
-      </Flex>
+    <>
+      <Container padding={0} maxW="container.sm" id="page_container">
+        <Flex justifyContent="space-between">
+          <HStack paddingLeft={4}>
+            <Icon as={FaUserEdit} boxSize={5} />
+            <Heading size="md" flexDirection="column">
+              Edit User
+            </Heading>
+          </HStack>
+          <Button variant="outline" size="sm" onClick={goBack} borderRadius="20px" colorScheme="teal" marginRight={2}>
+            <Icon as={IoArrowBackCircle} boxSize={5} />
+            &nbsp;Back To List
+          </Button>
+        </Flex>
 
-      <form onSubmit={handleSubmit} id="user_form">
-        <FormWrapper className={colorMode === 'light' ? 'form-wrapper-light' : 'form-wrapper-dark'}>
-          <Stack spacing="6" direction="column">
-            <TextInput
-              name="username"
-              label="Username"
-              value={data.username}
-              onChange={handleChange}
-              variant="filled"
-              errors={errors?.username}
-              isRequired
-            />
-            <TextInput
-              name="email"
-              label="Email"
-              value={data.email}
-              onChange={handleChange}
-              variant="filled"
-              errors={errors?.email}
-              isRequired
-            />
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input value={data.password} onChange={handleChange} variant="filled" type="password" />
-            </FormControl>
-            <FormControl id="isAdmin">
-              <HStack>
-                <Checkbox checked={data.isAdmin} onChange={handleChangeCheckbox} />
-                <FormLabel paddingTop="2">Is Admin?</FormLabel>
-              </HStack>
-            </FormControl>
+        <form onSubmit={handleSubmit} id="user_form">
+          <FormWrapper className={colorMode === 'light' ? 'form-wrapper-light' : 'form-wrapper-dark'}>
+            <Stack spacing="6" direction="column">
+              <TextInput
+                name="username"
+                label="Username"
+                value={data.username}
+                onChange={handleChange}
+                variant="filled"
+                errors={errors?.username}
+                isRequired
+              />
+              <TextInput
+                name="email"
+                label="Email"
+                value={data.email}
+                onChange={handleChange}
+                variant="filled"
+                errors={errors?.email}
+                isRequired
+              />
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input value={data.password} onChange={handleChange} variant="filled" type="password" />
+              </FormControl>
+              <FormControl id="isAdmin">
+                <HStack>
+                  <Checkbox checked={data.isAdmin} onChange={handleChangeCheckbox} />
+                  <FormLabel paddingTop="2">Is Admin?</FormLabel>
+                </HStack>
+              </FormControl>
+            </Stack>
+          </FormWrapper>
+          <Divider />
+          <Stack direction="row-reverse" py={1} px={2} spacing={2}>
+            <Button type="submit" variant="solid" colorScheme="blue" leftIcon={<HiOutlineSave />} width="120px">
+              Save
+            </Button>
+            <Button
+              type="button"
+              variant="solid"
+              colorScheme="red"
+              leftIcon={<MdDelete />}
+              width="120px"
+              onClick={() => setOpenDeleteConfirmation()}
+            >
+              Delete
+            </Button>
+            <Button
+              type="button"
+              variant="solid"
+              colorScheme="teal"
+              leftIcon={<MdCancel />}
+              width="120px"
+              onClick={goBack}
+            >
+              Cancel
+            </Button>
           </Stack>
-        </FormWrapper>
-        <Divider />
-        <Stack direction="row-reverse" py={1} px={2} spacing={2}>
-          <Button type="submit" variant="solid" colorScheme="blue" leftIcon={<HiOutlineSave />} width="120px">
-            Save
-          </Button>
-          <Button type="button" variant="solid" colorScheme="teal" leftIcon={<MdCancel />} width="120px">
-            Cancel
-          </Button>
-        </Stack>
-      </form>
-    </Container>
+        </form>
+      </Container>
+      <ConfirmationDialog
+        title="Confirm Deletion?"
+        message="Do you want to delete this user?"
+        isOpen={isOpenDeleteConfirmation}
+        onConfirm={doDelete}
+        onCancel={onCloseDeleteConfirmation}
+      />
+    </>
   );
 };
 
