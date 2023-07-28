@@ -4,30 +4,30 @@ import { FormControl, FormLabel, Input, FormErrorMessage } from '@chakra-ui/reac
 interface TextInputProps {
   label: string;
   name: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  defaultValue: string;
-  variant: string;
+  value?: string;
+  variant?: string;
   type?: string;
   isRequired: boolean;
   errors?: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const TextInput = ({
   label,
   name,
-  variant,
+  variant = 'filled',
   type = undefined,
-  onChange,
-  defaultValue,
+  value,
   isRequired = false,
   errors = undefined,
+  onChange,
 }: TextInputProps) => {
   const hasErrors = !!errors ?? false;
 
   return (
     <FormControl id={name} isInvalid={hasErrors}>
       <FormLabel>{label}</FormLabel>
-      <Input type={type} defaultValue={defaultValue} onChange={onChange} variant={variant} isRequired={isRequired} />
+      <Input type={type} value={value || ''} onChange={onChange} variant={variant} isRequired={isRequired} />
       <FormErrorMessage color="red">{errors}</FormErrorMessage>
     </FormControl>
   );

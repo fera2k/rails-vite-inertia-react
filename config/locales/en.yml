@@ -44,3 +44,6 @@ en:
     create:
       success: User was successfully created.
       error: User creation failed.
+    update:
+      success: User was successfully updated.
+      error: User update failed.

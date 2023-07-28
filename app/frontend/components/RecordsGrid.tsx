@@ -41,8 +41,6 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
   const { colorMode } = useColorMode();
   const baseTableClassName = colorMode === 'light' ? '' : 'basetable-darkmode';
 
-  console.log(`basetable class: ${baseTableClassName}`);
-
   const onColumnSort = (column: { column: ColumnShape; key: React.Key; order: SortOrder }) => {
     setSortByColumn({ key: column.key, order: 'asc' });
     setSortedItems(sortBy(items, [column.key]));

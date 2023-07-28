@@ -16,15 +16,19 @@ type UserType = {
   username: string;
   email: string;
 };
-type UserWithActionsType = UserType & { actions: string[] };
+type UserWithActionsType = UserType & {
+  actions: string[];
+  editPath: string;
+};
 
 type UsersListProps = {
   users: UserWithActionsType[];
   newPath: string;
+  editPath: string;
 };
 
-const onClickAction = (action: string, rowData: UserType) => {
-  console.log(`action: ${action}, rowData:`, rowData);
+const onClickAction = (action: string, rowData: UserWithActionsType) => {
+  router.get(rowData.editPath);
 };
 
 const columns: ColumnShape[] = [
@@ -55,7 +59,7 @@ const columns: ColumnShape[] = [
     cellRenderer: (elem) => (
       <Tooltip hasArrow label="Edit record" openDelay={600}>
         <Button
-          onClick={() => onClickAction('action', elem.rowData as UserType)}
+          onClick={() => onClickAction('action', elem.rowData as UserWithActionsType)}
           size="sm"
           variant="solid"
           colorScheme="teal"
@@ -67,9 +71,13 @@ const columns: ColumnShape[] = [
   },
 ];
 
-const UsersList = ({ users, newPath }: UsersListProps) => {
-  const { flash, errors } = useTypedPage().props;
+const UsersList = ({ users, newPath, editPath }: UsersListProps) => {
+  const { flash } = useTypedPage().props;
   const toast = useToast();
+
+  users.forEach((user) => {
+    user.editPath = editPath.replace('0', user.id.toString());
+  });
 
   useEffect(() => {
     if (flash && flash.success) {
@@ -90,8 +98,6 @@ const UsersList = ({ users, newPath }: UsersListProps) => {
       });
     }
   }, [flash, toast]);
-
-  console.log('user list error: ', errors);
 
   return (
     <Container padding={0} maxWidth="container.lg" id="page_container">
