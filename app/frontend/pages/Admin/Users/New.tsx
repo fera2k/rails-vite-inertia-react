@@ -11,7 +11,6 @@ import {
   HStack,
   Heading,
   Icon,
-  Input,
   Stack,
   useColorMode,
 } from '@chakra-ui/react';
@@ -97,6 +96,7 @@ const UserNew = ({ user, usersListPath, userPostPath }: UserNewProps) => {
               onChange={handleChange}
               variant="filled"
               errors={errors?.username}
+              autoComplete={false}
               isRequired
             />
             <TextInput
@@ -106,12 +106,20 @@ const UserNew = ({ user, usersListPath, userPostPath }: UserNewProps) => {
               onChange={handleChange}
               variant="filled"
               errors={errors?.email}
+              autoComplete={false}
               isRequired
             />
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input value={data.password} onChange={handleChange} variant="filled" type="password" />
-            </FormControl>
+            <TextInput
+              name="password"
+              label="Password"
+              value={data.password}
+              onChange={handleChange}
+              variant="filled"
+              errors={errors?.password}
+              type="password"
+              autoComplete={false}
+              isRequired
+            />
             <FormControl id="isAdmin">
               <HStack>
                 <Checkbox checked={data.isAdmin} onChange={handleChangeCheckbox} />

@@ -11,7 +11,6 @@ import {
   HStack,
   Heading,
   Icon,
-  Input,
   Stack,
   useColorMode,
   useDisclosure,
@@ -126,10 +125,17 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
                 errors={errors?.email}
                 isRequired
               />
-              <FormControl id="password">
-                <FormLabel>Password</FormLabel>
-                <Input value={data.password} onChange={handleChange} variant="filled" type="password" />
-              </FormControl>
+              <TextInput
+                name="password"
+                label="Password"
+                value={data.password}
+                onChange={handleChange}
+                variant="filled"
+                errors={errors?.password}
+                type="password"
+                autoComplete={false}
+                isRequired
+              />
               <FormControl id="isAdmin">
                 <HStack>
                   <Checkbox checked={data.isAdmin} onChange={handleChangeCheckbox} />
