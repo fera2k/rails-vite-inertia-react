@@ -26,7 +26,7 @@ const TextInput = ({
 }: TextInputProps) => {
   const hasErrors = !!errors ?? false;
   const autoCompleteValue = autoComplete ? 'on' : 'off';
-  console.log('value: ', value);
+
   return (
     <FormControl id={name} isInvalid={hasErrors}>
       <FormLabel>{label}</FormLabel>
