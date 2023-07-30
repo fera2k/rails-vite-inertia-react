@@ -12,11 +12,10 @@ import {
   Heading,
   useColorModeValue,
   Center,
-  useToast,
 } from '@chakra-ui/react';
 
 import useTypedPage from '@/hooks/useTypedPage';
-import { DEFAULT_TOAST_DURATION } from '@/constants/constants';
+import useToastAlert from '@/hooks/useToastAlert';
 
 type LoginCardProps = {
   loginPath: string;
@@ -25,12 +24,12 @@ type LoginCardProps = {
 
 const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
   const { flash } = useTypedPage().props;
-  const toast = useToast();
   const { data, setData } = useForm({
     login: '',
     password: '',
     remember: false,
   });
+  useToastAlert(flash);
 
   const onClickResetPassword = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -55,16 +54,6 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
   };
 
   useEffect(() => {
-    if (flash && flash.alert) {
-      toast({
-        title: 'Login error',
-        description: flash.alert,
-        status: 'error',
-        duration: DEFAULT_TOAST_DURATION,
-        isClosable: true,
-      });
-    }
-
     router.on('error', (err) => {
       console.log('errors:', err);
     });
@@ -72,7 +61,7 @@ const LoginCard = ({ loginPath, resetPasswordPath }: LoginCardProps) => {
       console.log('event(login): ', event);
       event.preventDefault();
     });
-  }, [flash, toast]);
+  }, []);
 
   return (
     <Flex minH="100vh" align="center" justify="center" bg={useColorModeValue('gray.50', 'gray.800')}>

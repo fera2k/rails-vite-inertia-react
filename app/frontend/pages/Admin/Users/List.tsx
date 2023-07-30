@@ -1,5 +1,5 @@
-import { useEffect, ReactNode } from 'react';
-import { Container, Button, Tooltip, useToast } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { Container, Button, Tooltip } from '@chakra-ui/react';
 import { FaUsers, FaPencilAlt } from 'react-icons/fa';
 
 import { router } from '@inertiajs/react';
@@ -8,7 +8,7 @@ import { Column, ColumnShape } from 'react-base-table';
 import SimpleLayout from '@/layouts/SimpleLayout';
 import RecordsGrid from '@/components/RecordsGrid';
 import useTypedPage from '@/hooks/useTypedPage';
-import { DEFAULT_TOAST_DURATION } from '@/constants/constants';
+import useToastAlert from '@/hooks/useToastAlert';
 import 'react-base-table/styles.css';
 
 type UserType = {
@@ -74,31 +74,10 @@ const columns: ColumnShape[] = [
 
 const UsersList = ({ users, newPath, editPath }: UsersListProps) => {
   const { flash } = useTypedPage().props;
-  const toast = useToast();
-
+  useToastAlert(flash);
   users.forEach((user) => {
     user.editPath = editPath.replace('0', user.id.toString());
   });
-
-  useEffect(() => {
-    if (flash && flash.success) {
-      toast({
-        description: flash.success,
-        status: 'success',
-        duration: DEFAULT_TOAST_DURATION,
-        isClosable: true,
-      });
-    }
-
-    if (flash && flash.alert) {
-      toast({
-        description: flash.alert,
-        status: 'error',
-        duration: DEFAULT_TOAST_DURATION,
-        isClosable: true,
-      });
-    }
-  }, [flash, toast]);
 
   return (
     <Container padding={0} maxWidth="container.lg" id="page_container">

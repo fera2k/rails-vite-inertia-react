@@ -1,4 +1,4 @@
-import { useEffect, ReactNode, SyntheticEvent, FormEvent } from 'react';
+import { ReactNode, SyntheticEvent, FormEvent } from 'react';
 import { router, useForm } from '@inertiajs/react';
 import {
   Button,
@@ -14,7 +14,6 @@ import {
   Input,
   Stack,
   useColorMode,
-  useToast,
   useDisclosure,
 } from '@chakra-ui/react';
 import { FaUserEdit } from 'react-icons/fa';
@@ -27,7 +26,7 @@ import SimpleLayout from '@/layouts/SimpleLayout';
 import FormWrapper from '@/components/FormWrapper';
 import TextInput from '@/components/TextInput';
 import useTypedPage from '@/hooks/useTypedPage';
-import { DEFAULT_TOAST_DURATION } from '@/constants/constants';
+import useToastAlert from '@/hooks/useToastAlert';
 
 type UserType = {
   id: number;
@@ -46,7 +45,6 @@ type UserEditProps = {
 
 const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEditProps) => {
   const { flash, errors } = useTypedPage().props;
-  const toast = useToast();
   const { colorMode } = useColorMode();
   const { data, setData } = useForm({
     username: user.username,
@@ -59,6 +57,7 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
     onOpen: setOpenDeleteConfirmation,
     onClose: onCloseDeleteConfirmation,
   } = useDisclosure();
+  useToastAlert(flash);
 
   const goBack = () => {
     router.visit(usersListPath);
@@ -89,17 +88,6 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
       },
     });
   };
-
-  useEffect(() => {
-    if (flash && flash.alert) {
-      toast({
-        description: flash.alert,
-        status: 'error',
-        duration: DEFAULT_TOAST_DURATION,
-        isClosable: true,
-      });
-    }
-  }, [flash, toast]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useEffect, ReactNode, SyntheticEvent, FormEvent } from 'react';
+import { ReactNode, SyntheticEvent, FormEvent } from 'react';
 import { router, useForm } from '@inertiajs/react';
 import {
   Button,
@@ -14,7 +14,6 @@ import {
   Input,
   Stack,
   useColorMode,
-  useToast,
 } from '@chakra-ui/react';
 import { FaUserPlus } from 'react-icons/fa';
 import { IoArrowBackCircle } from 'react-icons/io5';
@@ -25,7 +24,7 @@ import SimpleLayout from '@/layouts/SimpleLayout';
 import FormWrapper from '@/components/FormWrapper';
 import TextInput from '@/components/TextInput';
 import useTypedPage from '@/hooks/useTypedPage';
-import { DEFAULT_TOAST_DURATION } from '@/constants/constants';
+import useToastAlert from '@/hooks/useToastAlert';
 
 type UserType = {
   id: number;
@@ -43,7 +42,7 @@ type UserNewProps = {
 
 const UserNew = ({ user, usersListPath, userPostPath }: UserNewProps) => {
   const { flash, errors } = useTypedPage().props;
-  const toast = useToast();
+  useToastAlert(flash);
   const { colorMode } = useColorMode();
   const { data, setData } = useForm({
     username: user.username,
@@ -72,17 +71,6 @@ const UserNew = ({ user, usersListPath, userPostPath }: UserNewProps) => {
       user: { ...data },
     });
   };
-
-  useEffect(() => {
-    if (flash && flash.alert) {
-      toast({
-        description: flash.alert,
-        status: 'error',
-        duration: DEFAULT_TOAST_DURATION,
-        isClosable: true,
-      });
-    }
-  }, [flash, toast]);
 
   return (
     <Container padding={0} maxW="container.sm" id="page_container">
