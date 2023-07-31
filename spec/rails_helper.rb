@@ -23,6 +23,13 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
+
+# rubocop:disable Style/SingleLineMethods
+def windows?; RUBY_PLATFORM.downcase.include?('mswin'); end
+def macos?;   RUBY_PLATFORM.downcase.include?('darwin'); end
+def linux?;   RUBY_PLATFORM.downcase.include?('linux'); end
+# rubocop:enable Style/SingleLineMethods
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
