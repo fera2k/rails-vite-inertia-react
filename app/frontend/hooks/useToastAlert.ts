@@ -4,11 +4,11 @@ import { useToast } from '@chakra-ui/react';
 import { DEFAULT_TOAST_DURATION } from '@/constants/constants';
 
 type FlashMessageType = {
-  alert: string;
-  success: string;
+  alert?: string;
+  success?: string;
 };
 
-const useToastAlert = (flash: FlashMessageType) => {
+function useToastAlert(flash: FlashMessageType): void {
   const toast = useToast();
 
   useEffect(() => {
@@ -30,6 +30,6 @@ const useToastAlert = (flash: FlashMessageType) => {
       });
     }
   }, [flash, toast]);
-};
+}
 
 export default useToastAlert;
