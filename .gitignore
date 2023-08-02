@@ -48,3 +48,7 @@ node_modules
 .byebug_history
 
 sendgrid.env
+
+# ignore covarage report files
+coverage/
+
