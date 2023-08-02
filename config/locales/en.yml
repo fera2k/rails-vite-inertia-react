@@ -50,3 +50,5 @@ en:
     destroy:
       success: User was successfully deleted.
       error: User deletion failed.
+    edit:
+      not_found: User was not found.

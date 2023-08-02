@@ -26,13 +26,14 @@ module Users
 
     def edit
       user = User.find(params[:id])
-
       render inertia: 'Admin/Users/Edit', props: {
         user:,
         usersListPath: admin_users_path,
         userPutPath: admin_user_path(user),
         userDeletePath: admin_user_path(user)
       }
+    rescue ActiveRecord::RecordNotFound => _e
+      redirect_to(admin_users_path, alert: t('users.edit.not_found'))
     end
 
     def create
@@ -47,7 +48,7 @@ module Users
     def update
       user = User.find(params[:id])
       if user.update(user_params)
-        redirect_to(admin_users_path, notice: t('users.update.success'))
+        redirect_to(edit_admin_user_path(user), notice: t('users.update.success'))
       else
         redirect_to(edit_admin_user_path(user), alert: t('users.update.error'), inertia: { errors: user.errors })
       end
