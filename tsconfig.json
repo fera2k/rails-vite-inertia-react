@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "rootDir": "./app/frontend",
     "sourceMap": true,
     "removeComments": true,
@@ -25,6 +25,6 @@
     "types": ["vite/client", "jest"],
   },
   "include": ["app/frontend/**/*.ts", "app/frontend/**/*.tsx", "app/frontend/**/*.d.ts"],
-  "exclude": ["node_modules", "public", ],
+  "exclude": ["node_modules", "public"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
