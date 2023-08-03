@@ -18,6 +18,12 @@ const createApp = () =>
         </ChakraProvider>,
       );
     },
+    progress: {
+      delay: 250,
+      color: '#29d',
+      includeCSS: true,
+      showSpinner: false,
+    },
   });
 
 export default createApp;
