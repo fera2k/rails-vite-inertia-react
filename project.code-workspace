@@ -6,7 +6,29 @@
 	],
 	"settings": {
     "terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace",
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace",
+    "workbench.colorCustomizations": {
+      "terminal.background": "#0C0D0E",
+      "terminal.foreground": "#B7B8B9",
+      "terminalCursor.background": "#B7B8B9",
+      "terminalCursor.foreground": "#B7B8B9",
+      "terminal.ansiBlack": "#0C0D0E",
+      "terminal.ansiBlue": "#3182BD",
+      "terminal.ansiBrightBlack": "#737475",
+      "terminal.ansiBrightBlue": "#3182BD",
+      "terminal.ansiBrightCyan": "#80B1D3",
+      "terminal.ansiBrightGreen": "#31A354",
+      "terminal.ansiBrightMagenta": "#756BB1",
+      "terminal.ansiBrightRed": "#E31A1C",
+      "terminal.ansiBrightWhite": "#FCFDFE",
+      "terminal.ansiBrightYellow": "#DCA060",
+      "terminal.ansiCyan": "#80B1D3",
+      "terminal.ansiGreen": "#31A354",
+      "terminal.ansiMagenta": "#756BB1",
+      "terminal.ansiRed": "#E31A1C",
+      "terminal.ansiWhite": "#B7B8B9",
+      "terminal.ansiYellow": "#DCA060"
+    }
   },
 	"launch": {
     // Use IntelliSense to learn about possible attributes.
