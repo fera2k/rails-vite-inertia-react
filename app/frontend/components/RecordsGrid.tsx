@@ -14,8 +14,9 @@ import {
   InputLeftElement,
   useColorMode,
 } from '@chakra-ui/react';
-import sortBy from 'lodash.sortby';
 import BaseTable, { AutoResizer, ColumnShape, SortOrder } from 'react-base-table';
+import pick from 'lodash.pick';
+import sortBy from 'lodash.sortby';
 import GridWrapper from '@/components/GridWrapper';
 import 'react-base-table/styles.css';
 import './styles/RecordsGridStyle.css';
@@ -23,8 +24,10 @@ import './styles/RecordsGridStyle.css';
 interface RecordsGridProps {
   title?: string;
   titleIcon?: IconType;
-  items: object[];
+  items: Record<string, any>[];
   columns: ColumnShape[];
+  defaultSortByColumn: string;
+  filterableColumns?: string[];
   height?: string | number;
   onNewClick?: () => void;
 }
@@ -33,17 +36,40 @@ interface ColumnOrdering {
   key: React.Key;
   order: SortOrder;
 }
-const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, onNewClick }: RecordsGridProps) => {
-  const defaultSort: ColumnOrdering = { key: 'username', order: 'asc' };
-  const [sortByColumn, setSortByColumn] = useState(defaultSort);
-  const [sortedItems, setSortedItems] = useState(sortBy(items, ['username']));
+const RecordsGrid = ({
+  title,
+  titleIcon,
+  items,
+  columns,
+  defaultSortByColumn,
+  filterableColumns,
+  height: wrapperHeight,
+  onNewClick,
+}: RecordsGridProps) => {
+  const defaultColumnOrdering: ColumnOrdering = { key: defaultSortByColumn, order: 'asc' };
+  const [sortByColumn, setSortByColumn] = useState(defaultColumnOrdering);
+  const [sortedItems, setSortedItems] = useState(sortBy(items, [defaultSortByColumn]));
+  const [filteredItems, setFilteredItems] = useState(items);
 
   const { colorMode } = useColorMode();
   const baseTableClassName = colorMode === 'light' ? '' : 'basetable-darkmode';
 
   const onColumnSort = (column: { column: ColumnShape; key: React.Key; order: SortOrder }) => {
     setSortByColumn({ key: column.key, order: 'asc' });
-    setSortedItems(sortBy(items, [column.key]));
+    setSortedItems(sortBy(filteredItems, [column.key]));
+  };
+
+  const onSearchFieldChange = (ev: React.ChangeEvent<HTMLInputElement>): void => {
+    const term = ev.target.value.toLowerCase();
+
+    let filtered: object[] = [];
+    filtered = items.filter((item) => {
+      const values = Object.values(filterableColumns && filterableColumns.length ? pick(item, filterableColumns): item);
+      return values.some((value) => value.toString().toLowerCase().includes(term));
+    });
+
+    setFilteredItems(filtered);
+    setSortedItems(sortBy(filtered, [sortByColumn.key]));
   };
 
   return (
@@ -64,15 +90,7 @@ const RecordsGrid = ({ title, titleIcon, items, columns, height: wrapperHeight, 
             <InputLeftElement pointerEvents="none">
               <SearchIcon color="gray.300" />
             </InputLeftElement>
-            <Input
-              type="search"
-              placeholder="search..."
-              variant="filled"
-              onInput={
-                (_ev: React.ChangeEvent<HTMLInputElement>): void =>
-                  console.log('input search') /* setGlobalFilter(ev.target.value) */
-              }
-            />
+            <Input type="search" placeholder="filter..." variant="filled" onChange={onSearchFieldChange} />
           </InputGroup>
         </Box>
       </Flex>

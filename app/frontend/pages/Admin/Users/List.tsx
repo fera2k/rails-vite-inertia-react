@@ -86,6 +86,8 @@ const UsersList = ({ users, newPath, editPath }: UsersListProps) => {
         titleIcon={FaUsers}
         items={users}
         columns={columns}
+        defaultSortByColumn="username"
+        filterableColumns={['username', 'email']}
         height="calc(100vh - 250px)"
         onNewClick={() => router.visit(newPath)}
       />
