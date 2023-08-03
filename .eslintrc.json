@@ -46,6 +46,7 @@
   "rules": {
     "import/no-extraneous-dependencies": [
       "error", {
+        "dependencies": true,
         "devDependencies": ["**/*.test.ts", "**/*.spec.ts"]
       }
     ],
