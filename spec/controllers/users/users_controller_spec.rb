@@ -22,10 +22,16 @@ RSpec.describe Users::UsersController do
   end
 
   describe 'POST #create' do
-    it 'returns http success' do
-      user = build(:user)
-      post :create, params: { user: { name: user.username, email: user.email, password: user.password } }
-      expect(response).to have_http_status(:redirect)
+    let(:user) { build(:user) }
+
+    it 'redirects to index' do
+      post :create, params: { user: { username: user.username, email: user.email, password: user.password } }
+      expect(response).to redirect_to(admin_users_path)
+    end
+
+    it 'has a notice flash message' do
+      post :create, params: { user: { username: user.username, email: user.email, password: user.password } }
+      expect(flash[:notice]).to eq(I18n.t('users.create.success'))
     end
   end
 
@@ -38,20 +44,34 @@ RSpec.describe Users::UsersController do
   end
 
   describe 'PUT #update' do
-    it 'returns http success' do
-      user = create(:user)
-      put :update, params: { 
-        id: user.id, user: { username: 'updated username', email: 'updatedemail@test.com' }
+    let(:user) { create(:user) }
+
+    it 'redirects to edit' do
+      put :update, params: {
+        id: user.id, user: { username: 'updated username', email: 'updated_email@test.com' }
       }
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(edit_admin_user_path(user.id))
+    end
+
+    it 'has a notice flash message' do
+      put :update, params: {
+        id: user.id, user: { username: 'updated_username', email: 'updated_email@test.com' }
+      }
+      expect(flash[:notice]).to eq(I18n.t('users.update.success'))
     end
   end
 
   describe 'DELETE #destroy' do
-    it 'returns http success' do
-      user.save
+    let(:user) { create(:user) }
+
+    it 'redirects to index' do
       delete :destroy, params: { id: user.id }
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(admin_users_path)
+    end
+
+    it 'has a notice flash message' do
+      delete :destroy, params: { id: user.id }
+      expect(flash[:notice]).to eq(I18n.t('users.destroy.success'))
     end
   end
 end
