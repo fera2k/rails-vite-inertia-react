@@ -105,7 +105,7 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
         </Flex>
 
         <form onSubmit={handleSubmit} id="user_form">
-          <FormWrapper className={colorMode === 'light' ? 'form-wrapper-light' : 'form-wrapper-dark'}>
+          <FormWrapper className={colorMode === 'light' ? 'form-wrapper__light' : 'form-wrapper__dark'}>
             <Stack spacing="6" direction="column">
               <TextInput
                 name="username"

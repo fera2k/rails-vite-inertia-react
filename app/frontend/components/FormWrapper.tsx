@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
-import './styles/FormWrapperStyle.css';
+import './styles/FormWrapperStyle.scss';
 
 interface FormWrapperProps {
   children: React.ReactNode;
