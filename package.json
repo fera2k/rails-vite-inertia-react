@@ -73,7 +73,7 @@
   },
   "scripts": {
     "lint": "eslint ./app/frontend/ --ext .js,.jsx,.ts,.tsx",
-    "test": "NODE_ENV=test jest",
+    "test": "jest",
     "build": "tsc -p tsconfig.prod.json && vite build"
   },
   "pre-commit": "lint",

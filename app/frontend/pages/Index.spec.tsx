@@ -1,9 +1,22 @@
-import { render, cleanup } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import Index from './Index';
 
 afterEach(cleanup);
 
-test('renders without crashing', async () => {
-  render(<Index targetLoginUrl="/login" />);
+describe('Index', () => {
+  it('renders without crashing', async () => {
+    render(<Index />);
+  });
+
+  it('returns the landing page', async () => {
+    const { getByText } = render(<Index />);
+    expect(getByText('My App')).toBeInTheDocument();
+  });
+
+  it('has a login button', async () => { 
+    render(<Index />);
+    const loginButton = screen.getByRole('button', { name: /login/i });
+    expect(loginButton).toBeInTheDocument();
+  });
 });
 

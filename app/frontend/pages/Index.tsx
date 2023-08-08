@@ -5,10 +5,10 @@ import { router } from '@inertiajs/react';
 import SimpleLayoutWithFooter from '../layouts/SimpleLayoutWithFooter';
 
 type IndexProps = {
-  targetLoginUrl: string;
+  targetLoginUrl?: string;
 };
 
-const Index = ({ targetLoginUrl }: IndexProps) => {
+const Index = ({ targetLoginUrl = '/users/sign_in' }: IndexProps) => {
   const gotoLogin = () => {
     router.visit(targetLoginUrl);
   };
