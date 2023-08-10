@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import ViteRails from 'vite-plugin-rails';
 import React from '@vitejs/plugin-react';
 import UnoCSS from 'unocss/vite';
@@ -20,10 +18,4 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './setupTest.ts',
-  }
 });
-

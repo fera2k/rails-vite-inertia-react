@@ -22,8 +22,9 @@
     "paths": {
       "@/*": ["app/frontend/*"],
     },
-    "types": ["vite/client", "@types/react"],
+    "types": ["vite/client", "@types/react", "jest"],
   },
   "include": ["app/frontend"],
+  "exclude": ["node_modules", "public"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
