@@ -8,7 +8,7 @@ import theme from './theme';
 const createApp = () =>
   createInertiaApp({
     resolve: (name) => {
-      const pages = import.meta.glob('./pages/**/*.tsx', { eager: true });
+      const pages = import.meta.glob(['./pages/**/*.tsx', '!./pages/**/*.{test,spec}.tsx'], { eager: true });
       return pages[`./pages/${name}.tsx`];
     },
     setup({ el, App, props }) {
@@ -27,3 +27,7 @@ const createApp = () =>
   });
 
 export default createApp;
+
+
+// generate a glob pattern for all files ending with .test.tsx or .spec.tsx
+// const tests = import.meta.globEager('./**/*.{test,spec}.tsx');
