@@ -13,14 +13,14 @@
                              user_unlock GET    /users/unlock(.:format)                                                                           devise/unlocks#show
                                          POST   /users/unlock(.:format)                                                                           devise/unlocks#create
            password_request_confirmation GET    /users/password/request_confirmation(.:format)                                                    users/passwords#request_confirmation
-                             admin_users GET    /admin/users(.:format)                                                                            user/users#index
-                                         POST   /admin/users(.:format)                                                                            user/users#create
-                          new_admin_user GET    /admin/users/new(.:format)                                                                        user/users#new
-                         edit_admin_user GET    /admin/users/:id/edit(.:format)                                                                   user/users#edit
-                              admin_user GET    /admin/users/:id(.:format)                                                                        user/users#show
-                                         PATCH  /admin/users/:id(.:format)                                                                        user/users#update
-                                         PUT    /admin/users/:id(.:format)                                                                        user/users#update
-                                         DELETE /admin/users/:id(.:format)                                                                        user/users#destroy
+                             admin_users GET    /admin/users(.:format)                                                                            users/users#index
+                                         POST   /admin/users(.:format)                                                                            users/users#create
+                          new_admin_user GET    /admin/users/new(.:format)                                                                        users/users#new
+                         edit_admin_user GET    /admin/users/:id/edit(.:format)                                                                   users/users#edit
+                              admin_user GET    /admin/users/:id(.:format)                                                                        users/users#show
+                                         PATCH  /admin/users/:id(.:format)                                                                        users/users#update
+                                         PUT    /admin/users/:id(.:format)                                                                        users/users#update
+                                         DELETE /admin/users/:id(.:format)                                                                        users/users#destroy
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create

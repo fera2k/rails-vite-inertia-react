@@ -8,7 +8,7 @@ import theme from './theme';
 const createApp = () =>
   createInertiaApp({
     resolve: (name) => {
-      const pages = import.meta.glob('./pages/**/*.tsx', { eager: true });
+      const pages = import.meta.glob(['./pages/**/*.tsx', '!./pages/**/*.{test,spec}.tsx'], { eager: true });
       return pages[`./pages/${name}.tsx`];
     },
     setup({ el, App, props }) {
