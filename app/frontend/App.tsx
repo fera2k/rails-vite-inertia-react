@@ -27,7 +27,3 @@ const createApp = () =>
   });
 
 export default createApp;
-
-
-// generate a glob pattern for all files ending with .test.tsx or .spec.tsx
-// const tests = import.meta.globEager('./**/*.{test,spec}.tsx');
