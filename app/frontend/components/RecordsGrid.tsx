@@ -21,10 +21,10 @@ import GridWrapper from '@/components/GridWrapper';
 import 'react-base-table/styles.css';
 import './styles/RecordsGridStyle.css';
 
-interface RecordsGridProps {
+interface RecordsGridProps<T> {
   title?: string;
   titleIcon?: IconType;
-  items: Record<string, any>[];
+  items: T[];
   columns: ColumnShape[];
   defaultSortByColumn: string;
   filterableColumns?: string[];
@@ -36,7 +36,7 @@ interface ColumnOrdering {
   key: React.Key;
   order: SortOrder;
 }
-const RecordsGrid = ({
+const RecordsGrid = <T,>({
   title,
   titleIcon,
   items,
@@ -45,7 +45,7 @@ const RecordsGrid = ({
   filterableColumns,
   height: wrapperHeight,
   onNewClick,
-}: RecordsGridProps) => {
+}: RecordsGridProps<T>) => {
   const defaultColumnOrdering: ColumnOrdering = { key: defaultSortByColumn, order: 'asc' };
   const [sortByColumn, setSortByColumn] = useState(defaultColumnOrdering);
   const [sortedItems, setSortedItems] = useState(sortBy(items, [defaultSortByColumn]));
@@ -56,20 +56,20 @@ const RecordsGrid = ({
 
   const onColumnSort = (column: { column: ColumnShape; key: React.Key; order: SortOrder }) => {
     setSortByColumn({ key: column.key, order: 'asc' });
-    setSortedItems(sortBy(filteredItems, [column.key]));
+    setSortedItems(sortBy(filteredItems, [column.key as string]));
   };
 
   const onSearchFieldChange = (ev: React.ChangeEvent<HTMLInputElement>): void => {
     const term = ev.target.value.toLowerCase();
-
-    let filtered: object[] = [];
-    filtered = items.filter((item) => {
-      const values = Object.values(filterableColumns && filterableColumns.length ? pick(item, filterableColumns): item);
-      return values.some((value) => value.toString().toLowerCase().includes(term));
+    const filtered: T[] = items.filter((item) => {
+      const values: string[] = Object.values(
+        filterableColumns && filterableColumns.length ? pick(item, filterableColumns) : item,
+      );
+      return values.some((value) => value.toLowerCase().includes(term));
     });
 
     setFilteredItems(filtered);
-    setSortedItems(sortBy(filtered, [sortByColumn.key]));
+    setSortedItems(sortBy(filtered, [sortByColumn.key as string]));
   };
 
   return (
@@ -101,7 +101,7 @@ const RecordsGrid = ({
             <BaseTable
               width={width}
               height={height}
-              data={sortedItems}
+              data={sortedItems as T[]}
               columns={columns}
               onColumnSort={onColumnSort}
               sortBy={sortByColumn}

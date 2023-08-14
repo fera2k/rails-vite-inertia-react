@@ -81,7 +81,7 @@ const UsersList = ({ users, newPath, editPath }: UsersListProps) => {
 
   return (
     <Container padding={0} maxWidth="container.lg" id="page_container">
-      <RecordsGrid
+      <RecordsGrid<UserWithActionsType>
         title="User's List"
         titleIcon={FaUsers}
         items={users}

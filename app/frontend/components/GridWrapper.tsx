@@ -1,34 +1,16 @@
-import { styled } from '@linaria/react';
+import { Box } from '@chakra-ui/react';
+import './styles/GridWrapperStyle.scss';
 
-export interface GridWrapperProps {
+interface GridWrapperProps {
+  id: string;
+  children: React.ReactNode;
   height?: number | string;
 }
 
-const GridWrapper = styled.div<GridWrapperProps>`
-  overflow: hidden;
-  position: relative;
-
-  border-radius: 12px;
-
-  box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.2),
-    0 0 1px rgba(0, 0, 0, 0.4);
-
-  width: 100%;
-  height: ${(p) => `${p.height}`};
-
-  margin: 8px 0;
-
-  > :first-child {
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-GridWrapper.defaultProps = {
-  height: '100vh',
-};
+const GridWrapper = ({ height = '100vh', children, id }: GridWrapperProps) => (
+  <Box height={height} className="grid-wrapper" id={id}>
+    {children}
+  </Box>
+);
 
 export default GridWrapper;
