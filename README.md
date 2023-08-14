@@ -1,24 +1,22 @@
-# README
+# RVIR (Rails + ViteJS + InertiaJS + React) Template
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a template of a Rails application setup to quickly an [Rails](https://rubyonrails.org/) App that uses [InertiaJS](https://inertiajs.com/) and [React](https://react.dev/), powered by [ViteJS](https://vitejs.dev/).
 
-Things you may want to cover:
+# Setup
 
-* Ruby version
+1. Before Cloning make sure you have this installed:
+* Ruby 3.2.0
+* Node 18.14.0
 
-* System dependencies
+If you have [asdf](https://asdf-vm.com/) installed, you can run `asdf install` after you cloned the repo. (Make sure you have the node and ruby asdf plugins added)
 
-* Configuration
+1. Clone Repo
+2. Install Ruby dependencies
+> ```bundle install```
+3. Install Node dependencies
+> ```npm install```
+4. Initialize Database
+> ```rails db:create & rails db:migrate & rails db:seed```
+5. Start App in Dev mode
+> ```bin/dev```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
