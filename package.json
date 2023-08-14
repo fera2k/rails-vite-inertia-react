@@ -36,7 +36,7 @@
     "@typescript-eslint/parser": "^6.3.0",
     "@unocss/preset-uno": "^0.55.0",
     "@vitejs/plugin-react": "^4.0.4",
-    "eslint": "^8.46.0",
+    "eslint": "^8.47.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-prettier": "^9.0.0",

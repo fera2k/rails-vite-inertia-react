@@ -13,10 +13,9 @@ describe('Index', () => {
     expect(getByText('My App')).toBeInTheDocument();
   });
 
-  it('has a login button', async () => { 
+  it('has a login button', async () => {
     render(<Index />);
     const loginButton = screen.getByRole('button', { name: /login/i });
     expect(loginButton).toBeInTheDocument();
   });
 });
-
