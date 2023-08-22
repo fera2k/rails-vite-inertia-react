@@ -28,7 +28,7 @@ const TextInput = ({
   const autoCompleteValue = autoComplete ? 'on' : 'off';
 
   return (
-    <FormControl id={name} isInvalid={hasErrors}>
+    <FormControl id={name} isInvalid={hasErrors} height="70px" verticalAlign="top">
       <FormLabel>{label}</FormLabel>
       <Input
         type={type}

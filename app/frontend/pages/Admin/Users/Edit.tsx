@@ -1,4 +1,4 @@
-import { ReactNode, SyntheticEvent, FormEvent } from 'react';
+import { ReactNode, SyntheticEvent, FormEvent, useState } from 'react';
 import { router, useForm } from '@inertiajs/react';
 import {
   Button,
@@ -32,6 +32,7 @@ type UserType = {
   username: string;
   email: string;
   password: string;
+  password_confirmation: string;
   isAdmin: boolean;
 };
 
@@ -45,10 +46,12 @@ type UserEditProps = {
 const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEditProps) => {
   const { flash, errors } = useTypedPage().props;
   const { colorMode } = useColorMode();
-  const { data, setData } = useForm({
+  const [showPassowordField, setShowPasswordField] = useState(false);
+  const { data, setData, put, isDirty, processing, setDefaults } = useForm({
     username: user.username,
     email: user.email,
     password: user.password,
+    password_confirmation: user.password_confirmation,
     isAdmin: user.isAdmin,
   });
   const {
@@ -74,9 +77,10 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('userData: ', data);
-    router.put(userPutPath, {
-      user: { ...data },
+    put(userPutPath, {
+      onSuccess: () => {
+        setDefaults();
+      },
     });
   };
 
@@ -125,17 +129,43 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
                 errors={errors?.email}
                 isRequired
               />
-              <TextInput
-                name="password"
-                label="Password"
-                value={data.password}
-                onChange={handleChange}
-                variant="filled"
-                errors={errors?.password}
-                type="password"
-                autoComplete={false}
-                isRequired
-              />
+              {!showPassowordField && (
+                <Button
+                  type="button"
+                  variant="link"
+                  colorScheme="blue"
+                  width="120px"
+                  onClick={() => setShowPasswordField(true)}
+                >
+                  Edit Password
+                </Button>
+              )}
+              {showPassowordField && (
+                <Stack direction={{ base: 'column', sm: 'row' }}>
+                  <TextInput
+                    name="password"
+                    label="Password"
+                    value={data.password}
+                    onChange={handleChange}
+                    variant="filled"
+                    errors={errors?.password}
+                    type="password"
+                    autoComplete={false}
+                    isRequired
+                  />
+                  <TextInput
+                    name="password_confirmation"
+                    label="Confirm Password"
+                    value={data.password_confirmation}
+                    onChange={handleChange}
+                    variant="filled"
+                    errors={errors?.password_confirmation}
+                    type="password"
+                    autoComplete={false}
+                    isRequired
+                  />
+                </Stack>
+              )}
               <FormControl id="isAdmin">
                 <HStack>
                   <Checkbox checked={data.isAdmin} onChange={handleChangeCheckbox} />
@@ -146,7 +176,14 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
           </FormWrapper>
           <Divider />
           <Stack direction="row-reverse" py={1} px={2} spacing={2}>
-            <Button type="submit" variant="solid" colorScheme="blue" leftIcon={<HiOutlineSave />} width="120px">
+            <Button
+              type="submit"
+              variant="solid"
+              colorScheme="blue"
+              leftIcon={<HiOutlineSave />}
+              width="120px"
+              isDisabled={!isDirty || processing}
+            >
               Save
             </Button>
             <Button
@@ -155,6 +192,7 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
               colorScheme="red"
               leftIcon={<MdDelete />}
               width="120px"
+              isDisabled={processing}
               onClick={() => setOpenDeleteConfirmation()}
             >
               Delete
@@ -165,6 +203,7 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
               colorScheme="teal"
               leftIcon={<MdCancel />}
               width="120px"
+              isDisabled={processing}
               onClick={goBack}
             >
               Cancel
