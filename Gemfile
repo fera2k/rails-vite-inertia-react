@@ -38,7 +38,7 @@ gem 'bootsnap', '~> 1.16', require: false
 # Gems added to the project
 gem 'dalli', '~> 3.2.5'
 gem 'devise', '~> 4.9'
-gem 'inertia_rails', '~> 3.0'
+gem 'inertia_rails', '~> 3.1.1'
 gem 'vite_rails', '~> 3.0'
 
 group :development, :test do
