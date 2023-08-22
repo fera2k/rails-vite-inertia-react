@@ -67,7 +67,7 @@ module Users
     def user_params
       params
         .require(:user)
-        .permit(:username, :email, :password)
+        .permit(:username, :email, :password, :password_confirmation)
     end
   end
 end

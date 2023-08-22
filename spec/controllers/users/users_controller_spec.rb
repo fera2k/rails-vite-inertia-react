@@ -25,12 +25,12 @@ RSpec.describe Users::UsersController do
     let(:user) { build(:user) }
 
     it 'redirects to index' do
-      post :create, params: { user: { username: user.username, email: user.email, password: user.password } }
+      post :create, params: { user: build_post_body(user) }
       expect(response).to redirect_to(admin_users_path)
     end
 
     it 'has a notice flash message' do
-      post :create, params: { user: { username: user.username, email: user.email, password: user.password } }
+      post :create, params: { user: build_post_body(user) }
       expect(flash[:notice]).to eq(I18n.t('users.create.success'))
     end
   end
@@ -73,5 +73,14 @@ RSpec.describe Users::UsersController do
       delete :destroy, params: { id: user.id }
       expect(flash[:notice]).to eq(I18n.t('users.destroy.success'))
     end
+  end
+
+  def build_post_body(user)
+    {
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      password_confirmation: user.password
+    }
   end
 end
