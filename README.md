@@ -2,6 +2,12 @@
 
 This is a template of a Rails application setup to quickly an [Rails](https://rubyonrails.org/) App that uses [InertiaJS](https://inertiajs.com/) and [React](https://react.dev/), powered by [ViteJS](https://vitejs.dev/).
 
+The React component's are based on [Chakra-UI](https://chakra-ui.com/) and [UnoCSS](https://unocss.dev/).
+
+Tests are set up with [RSpec](https://rspec.info/) and [Jest](https://jestjs.io).
+
+This project is coded in VSCode and has configs for linting with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) and [Rubocop](https://rubocop.org/).
+
 # Setup
 
 1. Before Cloning make sure you have this installed:
