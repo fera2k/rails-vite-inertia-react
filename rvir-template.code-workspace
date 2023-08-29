@@ -28,7 +28,8 @@
       "terminal.ansiRed": "#E31A1C",
       "terminal.ansiWhite": "#B7B8B9",
       "terminal.ansiYellow": "#DCA060"
-    }
+    },
+    "typescript.tsdk": "node_modules/typescript/lib"
   },
 	"launch": {
     // Use IntelliSense to learn about possible attributes.
