@@ -4,7 +4,6 @@ import {
   Button,
   Checkbox,
   Container,
-  Divider,
   Flex,
   FormControl,
   FormLabel,
@@ -12,6 +11,7 @@ import {
   Heading,
   Icon,
   Stack,
+  Text,
   useColorMode,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -20,6 +20,7 @@ import { IoArrowBackCircle } from 'react-icons/io5';
 import { HiOutlineSave } from 'react-icons/hi';
 import { MdCancel, MdDelete } from 'react-icons/md';
 
+import { formatDateFromIso } from '@/shared/dateUtils';
 import ConfirmationDialog from '@/components/ConfirmationDialog';
 import SimpleLayout from '@/layouts/SimpleLayout';
 import FormWrapper from '@/components/FormWrapper';
@@ -34,6 +35,7 @@ type UserType = {
   password: string;
   password_confirmation: string;
   isAdmin: boolean;
+  updated_at: string;
 };
 
 type UserEditProps = {
@@ -173,8 +175,11 @@ const UserEdit = ({ user, usersListPath, userPutPath, userDeletePath }: UserEdit
                 </HStack>
               </FormControl>
             </Stack>
+            <Stack direction="row" color="gray.400" fontSize="xs">
+              <Text>Last modified at:&nbsp;</Text>
+              <Text fontWeight="bold">{formatDateFromIso(user.updated_at)}</Text>
+            </Stack>
           </FormWrapper>
-          <Divider />
           <Stack direction="row-reverse" py={1} px={2} spacing={2}>
             <Button
               type="submit"

@@ -12,6 +12,7 @@
     "@linaria/core": "^4.5.4",
     "@linaria/react": "^4.5.4",
     "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.16.1",
     "lodash.pick": "^4.4.0",
     "lodash.sortby": "^4.7.0",

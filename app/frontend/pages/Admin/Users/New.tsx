@@ -4,7 +4,6 @@ import {
   Button,
   Checkbox,
   Container,
-  Divider,
   Flex,
   FormControl,
   FormLabel,
@@ -128,7 +127,6 @@ const UserNew = ({ user, usersListPath, userPostPath }: UserNewProps) => {
             </FormControl>
           </Stack>
         </FormWrapper>
-        <Divider />
         <Stack direction="row-reverse" py={1} px={2} spacing={2}>
           <Button type="submit" variant="solid" colorScheme="blue" leftIcon={<HiOutlineSave />} width="120px">
             Save
